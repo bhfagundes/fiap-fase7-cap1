@@ -1,6 +1,6 @@
 # FarmTech - Sistema Integrado de Gestão para Agronegócio
 
-![FIAP Logo](assets/logo-fiap.png)
+<img src="assets/logo-fiap.png" width="200">
 
 ## 👨‍🎓 Integrantes:
 * Bryan Fagundes
@@ -1119,3 +1119,15 @@ python sources/dashboard/main.py
 3. Otimização de performance
 4. Melhorias de segurança
 5. Documentação adicional 
+
+## 📋 Licença
+
+MODELO GIT FIAP por Fiap está licenciado sobre Attribution 4.0 International.
+
+## About
+
+Projeto voltado a desenvolver soluções integradas para gestão do agronegócio, utilizando tecnologias modernas como IoT, Machine Learning e Visão Computacional.
+
+### Resources
+
+Readme 
