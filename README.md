@@ -1,6 +1,22 @@
 # FarmTech - Sistema Integrado de Gestão para Agronegócio
 
-## Descrição do Projeto
+![FIAP Logo](assets/logo-fiap.png)
+
+## 👨‍🎓 Integrantes:
+* Bryan Fagundes
+* Brenner Fagundes
+* Diogo Botton
+* Hyanka Coelho
+* Juliana Hungaro Fidelis
+
+## 👩‍🏫 Professores:
+### Tutor(a)
+* Leonardo Ruiz Orabona
+
+### Coordenador(a)
+* André Godoi
+
+## 📜 Descrição
 Este projeto integra todas as funcionalidades desenvolvidas nas Fases 1 a 6 em um sistema unificado de gestão para agronegócio, com capacidade de adaptação para outros setores da economia.
 
 ## Arquitetura Geral
