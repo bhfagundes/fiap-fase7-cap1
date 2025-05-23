@@ -39,6 +39,43 @@ sources/
 - **Monitoramento**: CloudWatch para logs e métricas
 - **Segurança**: IAM, WAF e Shield para proteção
 
+### Infraestrutura como Código (IaC)
+
+#### O que é IaC?
+Infraestrutura como Código (IaC) é uma prática que permite gerenciar e provisionar infraestrutura através de código, em vez de processos manuais. No FarmTech, utilizamos Terraform para implementar IaC.
+
+#### Por que usar IaC?
+1. **Consistência**: Elimina erros humanos e garante que todos os ambientes sejam idênticos
+2. **Versionamento**: Permite rastrear mudanças na infraestrutura como código
+3. **Automação**: Reduz tempo de deploy e possibilidade de erros
+4. **Reutilização**: Facilita a replicação da infraestrutura em diferentes ambientes
+5. **Documentação**: O código serve como documentação viva da infraestrutura
+
+#### O que o IaC resolve no FarmTech?
+1. **Gestão de Recursos AWS**:
+   - Provisionamento automático de VPC, subnets e security groups
+   - Configuração do cluster EKS
+   - Gerenciamento de banco de dados Aurora
+   - Configuração de serviços serverless (Lambda, API Gateway)
+
+2. **Segurança**:
+   - Políticas IAM automatizadas
+   - Configuração de WAF
+   - Gerenciamento de secrets
+   - Controle de acesso granular
+
+3. **Monitoramento**:
+   - Configuração do CloudWatch
+   - Dashboards automáticos
+   - Alertas e métricas
+   - Logs centralizados
+
+4. **Escalabilidade**:
+   - Auto-scaling groups
+   - Load balancers
+   - Cache distribuído
+   - Banco de dados serverless
+
 ## Melhorias Implementadas
 
 ### Fase 1 - Base de Dados Inicial
@@ -685,7 +722,7 @@ pip install -r requirements.txt
 python sources/dashboard/main.py
 ```
 
-## Integrantes do Grupo
+## Grupo
 - Hyanka Coelho Mota
 - Diogo de Oliveira Botton
 - Brenner Henrique Fagundes Araujo
@@ -699,364 +736,11 @@ python sources/dashboard/main.py
   - https://github.com/juhungaro/Fase_3
 - Fase 4: https://github.com/DiogoBotton/Fase_4
 - Fase 5: https://github.com/DiogoBotton/FarmTech_Fiap_Fase5
-- Fase 6: https://github.com/DiogoBotton/FIAP_CNN_Yolo 
-
-# FarmTech Dashboard
-
-## Arquitetura
-
-O FarmTech Dashboard é uma solução moderna e escalável construída na AWS, utilizando uma arquitetura baseada em microserviços e containers. A arquitetura foi projetada para ser altamente disponível, segura e otimizada para custos.
-
-### Componentes Principais
-
-- **Frontend**: Aplicação React com TypeScript, hospedada no CloudFront
-- **Backend**: API Gateway com Node.js/Express, rodando em containers no EKS
-- **Banco de Dados**: Aurora Serverless (PostgreSQL) para armazenamento de dados
-- **IoT**: AWS IoT Core para gerenciamento de dispositivos
-- **AI/ML**: SageMaker e Bedrock para análise de dados e previsões
-- **Monitoramento**: CloudWatch para logs e métricas
-- **Segurança**: IAM, WAF e Shield para proteção
-
-### Diagramas
-
-#### Topologia Cloud (cloud-topology.png)
-O diagrama de topologia cloud representa a infraestrutura AWS do FarmTech Dashboard, mostrando os principais componentes e suas interações:
-
-- **Internet**: Ponto de entrada para todos os usuários e dispositivos IoT
-- **CloudFront**: CDN para distribuição de conteúdo estático e cache
-- **Application Load Balancer**: Balanceamento de carga para as aplicações
-- **EKS (Elastic Kubernetes Service)**: Orquestração de containers para as aplicações
-- **Aurora Serverless**: Banco de dados PostgreSQL serverless para dados da fazenda
-- **IoT Core**: Gerenciamento de dispositivos IoT e coleta de dados
-- **Lambda**: Funções serverless para processamento de eventos
-- **SNS/SQS**: Mensageria para comunicação assíncrona
-- **SageMaker/Bedrock**: Serviços de IA para análise preditiva
-- **Rekognition**: Processamento de imagens para análise de culturas
-
-#### Diagrama C4
-O diagrama C4 apresenta a arquitetura em diferentes níveis:
-- Contexto: Interação entre usuários, dispositivos e sistema
-- Containers: Componentes principais e suas tecnologias
-- Componentes: Detalhamento interno de cada container
-
-#### CI/CD Pipeline
-O pipeline de integração e entrega contínua inclui:
-- Versionamento no GitHub
-- Automação com GitHub Actions
-- Análise de código com SonarQube
-- Segurança com Snyk
-- Deploy com ArgoCD
-- Registro de containers no ECR
-
-#### Fluxo de Alertas (alertas.png)
-O diagrama de fluxo de alertas mostra como o sistema gerencia e distribui notificações:
-
-- **CloudWatch**: Monitoramento de métricas e logs
-- **SNS**: Serviço de notificações para distribuição de alertas
-- **Lambda**: Processamento e formatação das mensagens
-- **Email (SES)**: Notificações por email para alertas importantes
-- **SMS**: Notificações urgentes por mensagem de texto
-- **Slack**: Integração com canal de comunicação da equipe
-
-#### Infraestrutura como Código (IaC)
-
-### O que é IaC?
-Infraestrutura como Código (IaC) é uma prática que permite gerenciar e provisionar infraestrutura através de código, em vez de processos manuais. No FarmTech, utilizamos Terraform para implementar IaC.
-
-### Por que usar IaC?
-1. **Consistência**: Elimina erros humanos e garante que todos os ambientes sejam idênticos
-2. **Versionamento**: Permite rastrear mudanças na infraestrutura como código
-3. **Automação**: Reduz tempo de deploy e possibilidade de erros
-4. **Reutilização**: Facilita a replicação da infraestrutura em diferentes ambientes
-5. **Documentação**: O código serve como documentação viva da infraestrutura
-
-### O que o IaC resolve no FarmTech?
-1. **Gestão de Recursos AWS**:
-   - Provisionamento automático de VPC, subnets e security groups
-   - Configuração do cluster EKS
-   - Gerenciamento de banco de dados Aurora
-   - Configuração de serviços serverless (Lambda, API Gateway)
-
-2. **Segurança**:
-   - Políticas IAM automatizadas
-   - Configuração de WAF
-   - Gerenciamento de secrets
-   - Controle de acesso granular
-
-3. **Monitoramento**:
-   - Configuração do CloudWatch
-   - Dashboards automáticos
-   - Alertas e métricas
-   - Logs centralizados
-
-4. **Escalabilidade**:
-   - Auto-scaling groups
-   - Load balancers
-   - Cache distribuído
-   - Banco de dados serverless
-
-## Estrutura Completa do Projeto
-
-### 1. Frontend
-- **Tecnologias**: React, TypeScript, Material-UI
-- **Componentes**:
-  - Dashboard interativo
-  - Visualização de dados em tempo real
-  - Gráficos e métricas
-  - Interface responsiva
-
-### 2. Backend
-- **Tecnologias**: Node.js, Express, TypeScript
-- **Serviços**:
-  - API RESTful
-  - Autenticação e autorização
-  - Processamento de dados
-  - Integração com serviços AWS
-
-### 3. Banco de Dados
-- **Tecnologia**: Aurora Serverless (PostgreSQL)
-- **Funcionalidades**:
-  - Armazenamento de dados da fazenda
-  - Cache com Redis
-  - Backup automático
-  - Replicação
-
-### 4. IoT e Automação
-- **Dispositivos**: ESP32, Sensores diversos
-- **Protocolos**: MQTT, HTTP
-- **Funcionalidades**:
-  - Coleta de dados em tempo real
-  - Monitoramento de condições
-  - Automação de processos
-  - Integração com AWS IoT Core
-
-### 5. Machine Learning
-- **Serviços**: SageMaker, Bedrock
-- **Modelos**:
-  - Previsão de rendimento
-  - Classificação de culturas
-  - Detecção de anomalias
-  - Otimização de recursos
-
-### 6. Visão Computacional
-- **Tecnologias**: TensorFlow, OpenCV
-- **Funcionalidades**:
-  - Detecção de objetos
-  - Classificação de imagens
-  - Análise de saúde das culturas
-  - Monitoramento automático
-
-### 7. Sistema de Alertas
-- **Componentes**:
-  - CloudWatch para monitoramento
-  - SNS para distribuição
-  - Lambda para processamento
-  - Múltiplos canais de notificação
-
-#### Fluxo de Alertas:
-1. **Monitoramento**:
-   - Métricas em tempo real
-   - Logs estruturados
-   - Eventos do sistema
-   - Condições de threshold
-
-2. **Processamento**:
-   - Análise de eventos
-   - Agregação de alertas
-   - Priorização
-   - Formatação de mensagens
-
-3. **Notificação**:
-   - Email (SES)
-   - SMS
-   - Slack
-   - PagerDuty
-
-4. **Ações Automáticas**:
-   - Escalonamento
-   - Auto-healing
-   - Backup
-   - Recuperação
-
-### 8. CI/CD Pipeline
-- **Ferramentas**:
-  - GitHub Actions
-  - SonarQube
-  - Snyk
-  - ArgoCD
-
-#### Fluxo de CI/CD:
-1. **Desenvolvimento**:
-   - Versionamento no GitHub
-   - Code review
-   - Testes automatizados
-   - Análise de código
-
-2. **Integração**:
-   - Build automatizado
-   - Testes de integração
-   - Análise de segurança
-   - Geração de artefatos
-
-3. **Entrega**:
-   - Deploy em ambientes
-   - Validação
-   - Monitoramento
-   - Rollback automático
-
-## Implementações "Ir Além"
-
-### 1. AWS Rekognition
-- **Status**: Implementado e documentado
-- **Funcionalidades**:
-  - Análise de imagens de culturas
-  - Detecção de doenças
-  - Monitoramento de crescimento
-  - Integração com dashboard
-
-### 2. Algoritmo Genético
-- **Status**: Implementado e documentado
-- **Funcionalidades**:
-  - Otimização de recursos
-  - Análise de dados históricos
-  - Comparação de estratégias
-  - Recomendações automáticas
-
-### 3. Visão Computacional
-- **Status**: Implementado e documentado
-- **Funcionalidades**:
-  - CNN para classificação
-  - YOLO para detecção
-  - Pipeline de processamento
-  - Análise em tempo real
-
-## Trade-offs e Decisões
-
-1. **Containerização vs Serverless**
-   - Escolha por containers para maior controle e portabilidade
-   - Serverless para funções específicas (Lambda)
-
-2. **Banco de Dados**
-   - Aurora Serverless para escalabilidade automática
-   - Trade-off entre custo e performance
-
-3. **Monitoramento**
-   - CloudWatch para logs e métricas
-   - Balanceamento entre detalhamento e custo
-
-4. **Segurança**
-   - Múltiplas camadas de proteção
-   - Trade-off entre segurança e usabilidade
-
-5. **Custos**
-   - Otimização de recursos
-   - Balanceamento entre performance e custo
+- Fase 6: https://github.com/DiogoBotton/FIAP_CNN_Yolo
 
 ## Próximos Passos
-
 1. Implementação de backup e DR
 2. Expansão da cobertura de testes
 3. Otimização de performance
 4. Melhorias de segurança
 5. Documentação adicional 
-
-#### Pipeline de Dados
-O pipeline de dados processa informações dos dispositivos IoT:
-- Coleta de dados via IoT Core
-- Streaming com Kinesis
-- Processamento com Lambda
-- Armazenamento no S3 Data Lake
-- Análise com Athena
-- Machine Learning com SageMaker
-- Visualização com QuickSight 
-
-## Ir Além
-
-O projeto FarmTech oferece três opções extras para desenvolvimento, permitindo que os grupos escolham uma delas para implementar e ganhar pontos extras na avaliação.
-
-### Opção 1: Integração de IA na Infraestrutura AWS
-**Objetivo:** Implementar um sistema de reconhecimento de imagens usando AWS Rekognition para análise de culturas.
-
-**Implementação:**
-- Configuração do AWS Rekognition
-- Pipeline de processamento de imagens
-- Integração com sistema existente
-- Análise automática de saúde das culturas
-
-**Documentação Necessária:**
-- Prints de configuração
-- Links para código fonte
-- Vídeo demonstrativo
-
-**Critérios de Avaliação:**
-- Qualidade da implementação
-- Documentação técnica
-- Demonstração prática
-- Justificativa da escolha
-
-### Opção 2: Otimização de Recursos com Algoritmos Genéticos
-**Objetivo:** Desenvolver um algoritmo genético para otimização de recursos agrícolas.
-
-**Implementação:**
-- Adaptação do algoritmo genético
-- Integração com dados do FarmTech
-- Comparação de estratégias
-- Otimização de recursos
-
-**Documentação Necessária:**
-- Notebooks Jupyter com análises
-- Código fonte comentado
-- Vídeo demonstrativo
-- Resultados comparativos
-
-**Critérios de Avaliação:**
-- Eficiência do algoritmo
-- Documentação técnica
-- Resultados obtidos
-- Justificativa da escolha
-
-### Opção 3: Sistema de Visão Computacional
-**Objetivo:** Desenvolver um sistema de visão computacional para análise de culturas.
-
-**Implementação:**
-- Redes Neurais Convolucionais (CNN)
-- YOLO para detecção de objetos
-- Transfer Learning
-- Análise em tempo real
-
-**Documentação Necessária:**
-- Notebooks de treinamento
-- Código fonte do modelo
-- Vídeo demonstrativo
-- Métricas de performance
-
-**Critérios de Avaliação:**
-- Precisão do modelo
-- Documentação técnica
-- Demonstração prática
-- Justificativa da escolha
-
-### Entregas para Cada Opção
-1. **Documentação Técnica**
-   - README detalhado
-   - Diagramas de arquitetura
-   - Prints de configuração
-   - Links para recursos
-
-2. **Código Fonte**
-   - Repositório organizado
-   - Código comentado
-   - Testes unitários
-   - Exemplos de uso
-
-3. **Vídeo Demonstrativo**
-   - Apresentação da solução
-   - Demonstração prática
-   - Explicação técnica
-   - Resultados obtidos
-
-4. **Justificativa**
-   - Por que a opção foi escolhida
-   - Benefícios esperados
-   - Impacto no projeto
-   - Possíveis melhorias futuras 
