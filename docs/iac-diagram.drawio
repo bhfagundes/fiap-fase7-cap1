@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-03-14T12:00:00.000Z" agent="Mozilla/5.0" version="21.7.5" etag="your-etag" type="device">
+  <diagram id="iac-diagram" name="FarmTech Infrastructure as Code">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Terraform -->
+        <mxCell id="terraform" value="Terraform" style="shape=mxgraph.aws4.terraform;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- VPC -->
+        <mxCell id="vpc" value="VPC" style="shape=mxgraph.aws4.vpc;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- EKS -->
+        <mxCell id="eks" value="EKS" style="shape=mxgraph.aws4.elastic_kubernetes_service;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- RDS -->
+        <mxCell id="rds" value="RDS" style="shape=mxgraph.aws4.rds;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- S3 -->
+        <mxCell id="s3" value="S3" style="shape=mxgraph.aws4.s3;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- IAM -->
+        <mxCell id="iam" value="IAM" style="shape=mxgraph.aws4.iam;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- CloudWatch -->
+        <mxCell id="cloudwatch" value="CloudWatch" style="shape=mxgraph.aws4.cloudwatch;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="conn1" value="Provision" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="terraform" target="vpc">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn2" value="Provision" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpc" target="eks">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn3" value="Provision" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="rds">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn4" value="Configure" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="terraform" target="s3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn5" value="Configure" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="terraform" target="iam">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn6" value="Configure" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="terraform" target="cloudwatch">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 

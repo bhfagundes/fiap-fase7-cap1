@@ -677,3 +677,199 @@ python sources/dashboard/main.py
 - Fase 4: https://github.com/DiogoBotton/Fase_4
 - Fase 5: https://github.com/DiogoBotton/FarmTech_Fiap_Fase5
 - Fase 6: https://github.com/DiogoBotton/FIAP_CNN_Yolo 
+
+# FarmTech Dashboard
+
+## Arquitetura
+
+O FarmTech Dashboard é uma solução moderna e escalável construída na AWS, utilizando uma arquitetura baseada em microserviços e containers. A arquitetura foi projetada para ser altamente disponível, segura e otimizada para custos.
+
+### Componentes Principais
+
+- **Frontend**: Aplicação React com TypeScript, hospedada no CloudFront
+- **Backend**: API Gateway com Node.js/Express, rodando em containers no EKS
+- **Banco de Dados**: Aurora Serverless (PostgreSQL) para armazenamento de dados
+- **IoT**: AWS IoT Core para gerenciamento de dispositivos
+- **AI/ML**: SageMaker e Bedrock para análise de dados e previsões
+- **Monitoramento**: CloudWatch para logs e métricas
+- **Segurança**: IAM, WAF e Shield para proteção
+
+### Diagramas
+
+#### Topologia Cloud (cloud-topology.png)
+O diagrama de topologia cloud representa a infraestrutura AWS do FarmTech Dashboard, mostrando os principais componentes e suas interações:
+
+- **Internet**: Ponto de entrada para todos os usuários e dispositivos IoT
+- **CloudFront**: CDN para distribuição de conteúdo estático e cache
+- **Application Load Balancer**: Balanceamento de carga para as aplicações
+- **EKS (Elastic Kubernetes Service)**: Orquestração de containers para as aplicações
+- **Aurora Serverless**: Banco de dados PostgreSQL serverless para dados da fazenda
+- **IoT Core**: Gerenciamento de dispositivos IoT e coleta de dados
+- **Lambda**: Funções serverless para processamento de eventos
+- **SNS/SQS**: Mensageria para comunicação assíncrona
+- **SageMaker/Bedrock**: Serviços de IA para análise preditiva
+- **Rekognition**: Processamento de imagens para análise de culturas
+
+#### Diagrama C4
+O diagrama C4 apresenta a arquitetura em diferentes níveis:
+- Contexto: Interação entre usuários, dispositivos e sistema
+- Containers: Componentes principais e suas tecnologias
+- Componentes: Detalhamento interno de cada container
+
+#### CI/CD Pipeline
+O pipeline de integração e entrega contínua inclui:
+- Versionamento no GitHub
+- Automação com GitHub Actions
+- Análise de código com SonarQube
+- Segurança com Snyk
+- Deploy com ArgoCD
+- Registro de containers no ECR
+
+#### Fluxo de Alertas (alertas.png)
+O diagrama de fluxo de alertas mostra como o sistema gerencia e distribui notificações:
+
+- **CloudWatch**: Monitoramento de métricas e logs
+- **SNS**: Serviço de notificações para distribuição de alertas
+- **Lambda**: Processamento e formatação das mensagens
+- **Email (SES)**: Notificações por email para alertas importantes
+- **SMS**: Notificações urgentes por mensagem de texto
+- **Slack**: Integração com canal de comunicação da equipe
+
+#### Infraestrutura como Código
+A infraestrutura é gerenciada com Terraform:
+- Provisionamento de VPC e subnets
+- Configuração do cluster EKS
+- Gerenciamento de banco de dados
+- Políticas IAM e segurança
+- Configuração de monitoramento
+
+### Trade-offs e Decisões
+
+1. **Containerização vs Serverless**
+   - Escolha por containers para maior controle e portabilidade
+   - Serverless para funções específicas (Lambda)
+
+2. **Banco de Dados**
+   - Aurora Serverless para escalabilidade automática
+   - Trade-off entre custo e performance
+
+3. **Monitoramento**
+   - CloudWatch para logs e métricas
+   - Balanceamento entre detalhamento e custo
+
+4. **Segurança**
+   - Múltiplas camadas de proteção
+   - Trade-off entre segurança e usabilidade
+
+5. **Custos**
+   - Otimização de recursos
+   - Balanceamento entre performance e custo
+
+### Próximos Passos
+
+1. Implementação de backup e DR
+2. Expansão da cobertura de testes
+3. Otimização de performance
+4. Melhorias de segurança
+5. Documentação adicional 
+
+#### Pipeline de Dados
+O pipeline de dados processa informações dos dispositivos IoT:
+- Coleta de dados via IoT Core
+- Streaming com Kinesis
+- Processamento com Lambda
+- Armazenamento no S3 Data Lake
+- Análise com Athena
+- Machine Learning com SageMaker
+- Visualização com QuickSight 
+
+## Ir Além
+
+O projeto FarmTech oferece três opções extras para desenvolvimento, permitindo que os grupos escolham uma delas para implementar e ganhar pontos extras na avaliação.
+
+### Opção 1: Integração de IA na Infraestrutura AWS
+**Objetivo:** Implementar um sistema de reconhecimento de imagens usando AWS Rekognition para análise de culturas.
+
+**Implementação:**
+- Configuração do AWS Rekognition
+- Pipeline de processamento de imagens
+- Integração com sistema existente
+- Análise automática de saúde das culturas
+
+**Documentação Necessária:**
+- Prints de configuração
+- Links para código fonte
+- Vídeo demonstrativo
+
+**Critérios de Avaliação:**
+- Qualidade da implementação
+- Documentação técnica
+- Demonstração prática
+- Justificativa da escolha
+
+### Opção 2: Otimização de Recursos com Algoritmos Genéticos
+**Objetivo:** Desenvolver um algoritmo genético para otimização de recursos agrícolas.
+
+**Implementação:**
+- Adaptação do algoritmo genético
+- Integração com dados do FarmTech
+- Comparação de estratégias
+- Otimização de recursos
+
+**Documentação Necessária:**
+- Notebooks Jupyter com análises
+- Código fonte comentado
+- Vídeo demonstrativo
+- Resultados comparativos
+
+**Critérios de Avaliação:**
+- Eficiência do algoritmo
+- Documentação técnica
+- Resultados obtidos
+- Justificativa da escolha
+
+### Opção 3: Sistema de Visão Computacional
+**Objetivo:** Desenvolver um sistema de visão computacional para análise de culturas.
+
+**Implementação:**
+- Redes Neurais Convolucionais (CNN)
+- YOLO para detecção de objetos
+- Transfer Learning
+- Análise em tempo real
+
+**Documentação Necessária:**
+- Notebooks de treinamento
+- Código fonte do modelo
+- Vídeo demonstrativo
+- Métricas de performance
+
+**Critérios de Avaliação:**
+- Precisão do modelo
+- Documentação técnica
+- Demonstração prática
+- Justificativa da escolha
+
+### Entregas para Cada Opção
+1. **Documentação Técnica**
+   - README detalhado
+   - Diagramas de arquitetura
+   - Prints de configuração
+   - Links para recursos
+
+2. **Código Fonte**
+   - Repositório organizado
+   - Código comentado
+   - Testes unitários
+   - Exemplos de uso
+
+3. **Vídeo Demonstrativo**
+   - Apresentação da solução
+   - Demonstração prática
+   - Explicação técnica
+   - Resultados obtidos
+
+4. **Justificativa**
+   - Por que a opção foi escolhida
+   - Benefícios esperados
+   - Impacto no projeto
+   - Possíveis melhorias futuras 

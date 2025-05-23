@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-03-14T12:00:00.000Z" agent="Mozilla/5.0" version="21.7.5" etag="your-etag" type="device">
+  <diagram id="c4-diagram" name="FarmTech C4 Diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Context -->
+        <mxCell id="context" value="FarmTech System" style="shape=c4_container;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="400" height="300" as="geometry"/>
+        </mxCell>
+        
+        <!-- User -->
+        <mxCell id="user" value="Agricultor" style="shape=c4_person;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- IoT Device -->
+        <mxCell id="iot-device" value="Dispositivos IoT" style="shape=c4_external_system;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Web App -->
+        <mxCell id="web-app" value="Web Application&#xa;(React + TypeScript)" style="shape=c4_container;html=1;dashed=0;fillColor=#438DD5;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- API -->
+        <mxCell id="api" value="API Gateway&#xa;(Node.js + Express)" style="shape=c4_container;html=1;dashed=0;fillColor=#438DD5;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database -->
+        <mxCell id="database" value="Aurora Serverless&#xa;(PostgreSQL)" style="shape=c4_database;html=1;dashed=0;fillColor=#438DD5;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- AI Services -->
+        <mxCell id="ai" value="AI Services&#xa;(SageMaker + Bedrock)" style="shape=c4_container;html=1;dashed=0;fillColor=#438DD5;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="520" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="conn1" value="Usa" style="shape=c4_relationship;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" edge="1" parent="1" source="user" target="web-app">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn2" value="Envia dados" style="shape=c4_relationship;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" edge="1" parent="1" source="iot-device" target="api">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn3" value="Consome" style="shape=c4_relationship;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" edge="1" parent="1" source="web-app" target="api">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn4" value="Armazena dados" style="shape=c4_relationship;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" edge="1" parent="1" source="api" target="database">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn5" value="Utiliza" style="shape=c4_relationship;html=1;dashed=0;fillColor=#08427B;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" edge="1" parent="1" source="api" target="ai">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 
