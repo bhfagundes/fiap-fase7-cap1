@@ -1,6 +1,8 @@
 # FarmTech - Sistema Integrado de Gestão para Agronegócio
 
-<img src="assets/logo-fiap.png" width="200">
+<div align="center">
+  <img src="assets/logo-fiap.png" width="300">
+</div>
 
 ## 👨‍🎓 Integrantes:
 * Bryan Fagundes
@@ -18,6 +20,170 @@
 
 ## 📜 Descrição
 Este projeto integra todas as funcionalidades desenvolvidas nas Fases 1 a 6 em um sistema unificado de gestão para agronegócio, com capacidade de adaptação para outros setores da economia.
+
+## 📊 Diagramas
+
+### Arquitetura C4
+
+#### Nível 1 - Contexto
+```mermaid
+graph TD
+    A[FarmTech] -->|Gerencia| B[Fazendas]
+    A -->|Integra| C[Sistemas Externos]
+    A -->|Fornece| D[Usuários]
+    
+    subgraph Usuários
+        D1[Agricultores]
+        D2[Gerentes]
+        D3[Operadores]
+    end
+    
+    subgraph Sistemas
+        C1[APIs Meteorológicas]
+        C2[APIs de Mercado]
+        C3[APIs de Notícias]
+    end
+```
+
+#### Nível 2 - Container
+```mermaid
+graph TD
+    A[FarmTech] -->|Frontend| B[Dashboard Web]
+    A -->|Backend| C[API REST]
+    A -->|Banco de Dados| D[PostgreSQL]
+    A -->|IoT| E[Dispositivos]
+    A -->|ML| F[Modelos]
+    
+    subgraph Frontend
+        B1[React]
+        B2[Streamlit]
+    end
+    
+    subgraph Backend
+        C1[FastAPI]
+        C2[Node.js]
+    end
+    
+    subgraph IoT
+        E1[Sensores]
+        E2[Atuadores]
+    end
+```
+
+#### Nível 3 - Componente
+```mermaid
+graph TD
+    A[FarmTech] -->|Autenticação| B[Cognito]
+    A -->|Processamento| C[Lambda]
+    A -->|Armazenamento| D[S3]
+    A -->|Análise| E[SageMaker]
+    A -->|Monitoramento| F[CloudWatch]
+    
+    subgraph Processamento
+        C1[Funções]
+        C2[Jobs]
+    end
+    
+    subgraph Armazenamento
+        D1[Dados]
+        D2[Logs]
+    end
+```
+
+### Topologia Cloud
+```mermaid
+graph TD
+    A[Route 53] -->|DNS| B[CloudFront]
+    B -->|CDN| C[ALB]
+    C -->|Load Balance| D[ECS/EKS]
+    D -->|Container| E[EC2]
+    D -->|Serverless| F[Lambda]
+    E -->|Dados| G[RDS]
+    F -->|Dados| G
+    E -->|Eventos| H[EventBridge]
+    H -->|Notificações| I[SNS]
+    I -->|Mensagens| J[SQS]
+```
+
+### Fluxo CI/CD
+```mermaid
+graph LR
+    A[GitHub] -->|Push| B[GitHub Actions]
+    B -->|Build| C[ECR]
+    B -->|Test| D[CodeBuild]
+    B -->|Deploy| E[ECS/EKS]
+    B -->|Infra| F[Terraform]
+    F -->|Provision| G[AWS]
+```
+
+### Fluxo IaC
+```mermaid
+graph TD
+    A[Terraform] -->|Provisiona| B[VPC]
+    A -->|Configura| C[Security Groups]
+    A -->|Cria| D[ECS/EKS]
+    A -->|Define| E[ALB]
+    A -->|Gerencia| F[IAM]
+    A -->|Configura| G[CloudWatch]
+```
+
+### Fluxo de Alertas
+```mermaid
+graph TD
+    A[Monitoramento] -->|Métricas| B[CloudWatch]
+    B -->|Alerta| C[SNS]
+    C -->|Notifica| D[Email]
+    C -->|Notifica| E[SMS]
+    C -->|Notifica| F[Slack]
+    B -->|Logs| G[CloudWatch Logs]
+    G -->|Análise| H[Insights]
+```
+
+### Fluxo de Integração entre Fases
+```mermaid
+graph TD
+    A[Fase 1] -->|API REST| B[Fase 2]
+    B -->|Dados| C[Fase 3]
+    C -->|IoT| D[Fase 4]
+    D -->|Dashboard| E[Fase 5]
+    E -->|ML| F[Fase 6]
+    F -->|Visão| G[Fase 7]
+    
+    subgraph Fase 1
+        A1[API Base]
+        A2[Logging]
+    end
+    
+    subgraph Fase 2
+        B1[Banco de Dados]
+        B2[Cache]
+    end
+    
+    subgraph Fase 3
+        C1[Sensores]
+        C2[Automação]
+    end
+    
+    subgraph Fase 4
+        D1[Visualização]
+        D2[Gráficos]
+    end
+    
+    subgraph Fase 5
+        E1[ML]
+        E2[Previsões]
+    end
+    
+    subgraph Fase 6
+        F1[CNN]
+        F2[YOLO]
+    end
+    
+    subgraph Fase 7
+        G1[Dashboard]
+        G2[Integração]
+    end
+```
 
 ## Arquitetura Geral
 ```mermaid
