@@ -54,6 +54,149 @@ sources/
 - **Monitoramento**: CloudWatch para logs e métricas
 - **Segurança**: IAM, WAF e Shield para proteção
 
+### Segurança
+
+#### Controle de Acesso e Autenticação
+```mermaid
+graph TD
+    A[Usuário] -->|Login| B[Cognito]
+    B -->|Token JWT| C[API Gateway]
+    C -->|Autorização| D[Backend]
+    D -->|RBAC| E[Recursos]
+    
+    subgraph AWS
+        B
+        C
+        D
+        E
+    end
+```
+
+1. **Autenticação**
+   - AWS Cognito para gerenciamento de usuários
+   - MFA (Multi-Factor Authentication)
+   - Tokens JWT para sessões
+   - Políticas de senha robustas
+
+2. **Autorização**
+   - RBAC (Role-Based Access Control)
+   - Políticas IAM granulares
+   - Grupos de usuários
+   - Permissões baseadas em recursos
+
+#### Segurança de Dados
+```mermaid
+graph TD
+    A[Dados] -->|Criptografia| B[Armazenamento]
+    B -->|Backup| C[S3]
+    B -->|Replicação| D[Aurora]
+    E[KMS] -->|Chaves| B
+    
+    subgraph AWS
+        B
+        C
+        D
+        E
+    end
+```
+
+1. **Criptografia**
+   - Dados em trânsito (TLS/SSL)
+   - Dados em repouso (AES-256)
+   - AWS KMS para gerenciamento de chaves
+   - Certificados digitais
+
+2. **Proteção de Dados**
+   - Backup automático
+   - Replicação de dados
+   - Versionamento
+   - Retenção configurável
+
+#### Segurança IoT
+```mermaid
+graph TD
+    A[Dispositivo] -->|Certificado| B[IoT Core]
+    B -->|Políticas| C[Shadow]
+    B -->|Monitoramento| D[CloudWatch]
+    E[Security Hub] -->|Alertas| F[Equipe]
+    
+    subgraph AWS
+        B
+        C
+        D
+        E
+    end
+```
+
+1. **Dispositivos IoT**
+   - Certificados X.509
+   - Políticas de segurança por dispositivo
+   - Shadow state para controle
+   - Atualizações OTA seguras
+
+2. **Monitoramento IoT**
+   - Detecção de anomalias
+   - Alertas de segurança
+   - Logs de auditoria
+   - Métricas de comportamento
+
+#### Segurança de Rede
+```mermaid
+graph TD
+    A[Internet] -->|WAF| B[CloudFront]
+    B -->|VPC| C[Backend]
+    C -->|Security Groups| D[Recursos]
+    E[Shield] -->|Proteção| B
+    
+    subgraph AWS
+        B
+        C
+        D
+        E
+    end
+```
+
+1. **Proteção de Rede**
+   - AWS WAF para proteção web
+   - AWS Shield para DDoS
+   - Security Groups
+   - NACLs (Network ACLs)
+
+2. **Isolamento**
+   - VPC com subnets privadas
+   - NAT Gateways
+   - VPN para acesso remoto
+   - Endpoints VPC
+
+#### Monitoramento e Compliance
+```mermaid
+graph TD
+    A[Recursos] -->|Logs| B[CloudWatch]
+    B -->|Alertas| C[SNS]
+    B -->|Métricas| D[Dashboard]
+    E[Config] -->|Compliance| F[Relatórios]
+    
+    subgraph AWS
+        B
+        C
+        D
+        E
+        F
+    end
+```
+
+1. **Monitoramento**
+   - CloudWatch Logs
+   - CloudTrail para auditoria
+   - AWS Config para compliance
+   - Security Hub para visão centralizada
+
+2. **Alertas e Resposta**
+   - SNS para notificações
+   - EventBridge para automação
+   - Runbooks de resposta
+   - Equipe de segurança 24/7
+
 ### Infraestrutura como Código (IaC)
 
 #### O que é IaC?
