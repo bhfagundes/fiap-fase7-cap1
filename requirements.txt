@@ -1,0 +1,15 @@
+streamlit>=1.24.0
+pandas>=1.5.3
+numpy>=1.24.3
+scikit-learn>=1.2.2
+boto3>=1.26.137
+python-dotenv>=1.0.0
+opencv-python>=4.7.0
+ultralytics>=8.0.0
+plotly>=5.14.1
+dash>=2.9.3
+dash-bootstrap-components>=1.4.1
+SQLAlchemy>=2.0.15
+psycopg2-binary>=2.9.6
+paho-mqtt>=1.6.1
+requests>=2.31.0 
