@@ -17,6 +17,36 @@ sources/
 └── dashboard/      # Dashboard Integrado (Fase 7)
 ```
 
+## Arquitetura
+
+### Diagramas de Arquitetura
+
+#### Topologia Cloud
+![Topologia Cloud](sources/dashboard/docs/cloud-topology.png)
+*Diagrama da infraestrutura AWS do FarmTech Dashboard*
+
+#### Diagrama C4
+![Diagrama C4](sources/dashboard/docs/c4-diagram.png)
+*Arquitetura em diferentes níveis de abstração*
+
+#### Pipeline CI/CD
+![Pipeline CI/CD](sources/dashboard/docs/cicd-pipeline.png)
+*Fluxo de integração e entrega contínua*
+
+#### Fluxo de Alertas
+![Fluxo de Alertas](sources/dashboard/docs/alertas.png)
+*Sistema de gerenciamento e distribuição de notificações*
+
+### Componentes Principais
+
+- **Frontend**: Aplicação React com TypeScript, hospedada no CloudFront
+- **Backend**: API Gateway com Node.js/Express, rodando em containers no EKS
+- **Banco de Dados**: Aurora Serverless (PostgreSQL) para armazenamento de dados
+- **IoT**: AWS IoT Core para gerenciamento de dispositivos
+- **AI/ML**: SageMaker e Bedrock para análise de dados e previsões
+- **Monitoramento**: CloudWatch para logs e métricas
+- **Segurança**: IAM, WAF e Shield para proteção
+
 ## Melhorias Implementadas
 
 ### Fase 1 - Base de Dados Inicial
@@ -735,15 +765,179 @@ O diagrama de fluxo de alertas mostra como o sistema gerencia e distribui notifi
 - **SMS**: Notificações urgentes por mensagem de texto
 - **Slack**: Integração com canal de comunicação da equipe
 
-#### Infraestrutura como Código
-A infraestrutura é gerenciada com Terraform:
-- Provisionamento de VPC e subnets
-- Configuração do cluster EKS
-- Gerenciamento de banco de dados
-- Políticas IAM e segurança
-- Configuração de monitoramento
+#### Infraestrutura como Código (IaC)
 
-### Trade-offs e Decisões
+### O que é IaC?
+Infraestrutura como Código (IaC) é uma prática que permite gerenciar e provisionar infraestrutura através de código, em vez de processos manuais. No FarmTech, utilizamos Terraform para implementar IaC.
+
+### Por que usar IaC?
+1. **Consistência**: Elimina erros humanos e garante que todos os ambientes sejam idênticos
+2. **Versionamento**: Permite rastrear mudanças na infraestrutura como código
+3. **Automação**: Reduz tempo de deploy e possibilidade de erros
+4. **Reutilização**: Facilita a replicação da infraestrutura em diferentes ambientes
+5. **Documentação**: O código serve como documentação viva da infraestrutura
+
+### O que o IaC resolve no FarmTech?
+1. **Gestão de Recursos AWS**:
+   - Provisionamento automático de VPC, subnets e security groups
+   - Configuração do cluster EKS
+   - Gerenciamento de banco de dados Aurora
+   - Configuração de serviços serverless (Lambda, API Gateway)
+
+2. **Segurança**:
+   - Políticas IAM automatizadas
+   - Configuração de WAF
+   - Gerenciamento de secrets
+   - Controle de acesso granular
+
+3. **Monitoramento**:
+   - Configuração do CloudWatch
+   - Dashboards automáticos
+   - Alertas e métricas
+   - Logs centralizados
+
+4. **Escalabilidade**:
+   - Auto-scaling groups
+   - Load balancers
+   - Cache distribuído
+   - Banco de dados serverless
+
+## Estrutura Completa do Projeto
+
+### 1. Frontend
+- **Tecnologias**: React, TypeScript, Material-UI
+- **Componentes**:
+  - Dashboard interativo
+  - Visualização de dados em tempo real
+  - Gráficos e métricas
+  - Interface responsiva
+
+### 2. Backend
+- **Tecnologias**: Node.js, Express, TypeScript
+- **Serviços**:
+  - API RESTful
+  - Autenticação e autorização
+  - Processamento de dados
+  - Integração com serviços AWS
+
+### 3. Banco de Dados
+- **Tecnologia**: Aurora Serverless (PostgreSQL)
+- **Funcionalidades**:
+  - Armazenamento de dados da fazenda
+  - Cache com Redis
+  - Backup automático
+  - Replicação
+
+### 4. IoT e Automação
+- **Dispositivos**: ESP32, Sensores diversos
+- **Protocolos**: MQTT, HTTP
+- **Funcionalidades**:
+  - Coleta de dados em tempo real
+  - Monitoramento de condições
+  - Automação de processos
+  - Integração com AWS IoT Core
+
+### 5. Machine Learning
+- **Serviços**: SageMaker, Bedrock
+- **Modelos**:
+  - Previsão de rendimento
+  - Classificação de culturas
+  - Detecção de anomalias
+  - Otimização de recursos
+
+### 6. Visão Computacional
+- **Tecnologias**: TensorFlow, OpenCV
+- **Funcionalidades**:
+  - Detecção de objetos
+  - Classificação de imagens
+  - Análise de saúde das culturas
+  - Monitoramento automático
+
+### 7. Sistema de Alertas
+- **Componentes**:
+  - CloudWatch para monitoramento
+  - SNS para distribuição
+  - Lambda para processamento
+  - Múltiplos canais de notificação
+
+#### Fluxo de Alertas:
+1. **Monitoramento**:
+   - Métricas em tempo real
+   - Logs estruturados
+   - Eventos do sistema
+   - Condições de threshold
+
+2. **Processamento**:
+   - Análise de eventos
+   - Agregação de alertas
+   - Priorização
+   - Formatação de mensagens
+
+3. **Notificação**:
+   - Email (SES)
+   - SMS
+   - Slack
+   - PagerDuty
+
+4. **Ações Automáticas**:
+   - Escalonamento
+   - Auto-healing
+   - Backup
+   - Recuperação
+
+### 8. CI/CD Pipeline
+- **Ferramentas**:
+  - GitHub Actions
+  - SonarQube
+  - Snyk
+  - ArgoCD
+
+#### Fluxo de CI/CD:
+1. **Desenvolvimento**:
+   - Versionamento no GitHub
+   - Code review
+   - Testes automatizados
+   - Análise de código
+
+2. **Integração**:
+   - Build automatizado
+   - Testes de integração
+   - Análise de segurança
+   - Geração de artefatos
+
+3. **Entrega**:
+   - Deploy em ambientes
+   - Validação
+   - Monitoramento
+   - Rollback automático
+
+## Implementações "Ir Além"
+
+### 1. AWS Rekognition
+- **Status**: Implementado e documentado
+- **Funcionalidades**:
+  - Análise de imagens de culturas
+  - Detecção de doenças
+  - Monitoramento de crescimento
+  - Integração com dashboard
+
+### 2. Algoritmo Genético
+- **Status**: Implementado e documentado
+- **Funcionalidades**:
+  - Otimização de recursos
+  - Análise de dados históricos
+  - Comparação de estratégias
+  - Recomendações automáticas
+
+### 3. Visão Computacional
+- **Status**: Implementado e documentado
+- **Funcionalidades**:
+  - CNN para classificação
+  - YOLO para detecção
+  - Pipeline de processamento
+  - Análise em tempo real
+
+## Trade-offs e Decisões
 
 1. **Containerização vs Serverless**
    - Escolha por containers para maior controle e portabilidade
@@ -765,7 +959,7 @@ A infraestrutura é gerenciada com Terraform:
    - Otimização de recursos
    - Balanceamento entre performance e custo
 
-### Próximos Passos
+## Próximos Passos
 
 1. Implementação de backup e DR
 2. Expansão da cobertura de testes
