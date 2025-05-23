@@ -1,0 +1,117 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Logs e bancos de dados
+*.log
+*.sqlite3
+*.db
+
+# Arquivos de configuração sensíveis
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+aws_credentials.json
+
+# Arquivos específicos do projeto
+# Fase 1
+fase1/data/raw/*
+fase1/data/processed/*
+!fase1/data/raw/.gitkeep
+!fase1/data/processed/.gitkeep
+
+# Fase 2
+fase2/database/migrations/*
+!fase2/database/migrations/.gitkeep
+
+# Fase 3
+fase3/cap12/data/*
+fase3/cap1/data/*
+!fase3/cap12/data/.gitkeep
+!fase3/cap1/data/.gitkeep
+
+# Fase 4
+fase4/data/*
+fase4/models/*
+!fase4/data/.gitkeep
+!fase4/models/.gitkeep
+
+# Fase 5
+fase5/aws_credentials/*
+fase5/logs/*
+!fase5/aws_credentials/.gitkeep
+!fase5/logs/.gitkeep
+
+# Fase 6
+fase6/data/*
+fase6/models/*
+fase6/predictions/*
+!fase6/data/.gitkeep
+!fase6/models/.gitkeep
+!fase6/predictions/.gitkeep
+
+# Dashboard
+dashboard/data/*
+dashboard/logs/*
+!dashboard/data/.gitkeep
+!dashboard/logs/.gitkeep
+
+# Arquivos de cache
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arquivos temporários
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db 
