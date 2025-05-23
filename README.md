@@ -5,8 +5,8 @@
 </div>
 
 ## 👨‍🎓 Integrantes:
-* Bryan Fagundes
 * Brenner Fagundes
+* Bryan Fagundes
 * Diogo Botton
 * Hyanka Coelho
 * Juliana Hungaro Fidelis
@@ -1288,12 +1288,4 @@ python sources/dashboard/main.py
 
 ## 📋 Licença
 
-MODELO GIT FIAP por Fiap está licenciado sobre Attribution 4.0 International.
-
-## About
-
-Projeto voltado a desenvolver soluções integradas para gestão do agronegócio, utilizando tecnologias modernas como IoT, Machine Learning e Visão Computacional.
-
-### Resources
-
-Readme 
+MODELO GIT FIAP por Fiap está licenciado sobre Attribution 4.0 International. 
