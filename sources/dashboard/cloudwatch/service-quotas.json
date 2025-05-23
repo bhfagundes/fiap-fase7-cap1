@@ -1,0 +1,97 @@
+{
+  "ServiceQuotas": [
+    {
+      "ServiceCode": "lambda",
+      "QuotaCode": "L-2EBF7451",
+      "QuotaName": "Concurrent executions",
+      "Value": 1000,
+      "AlarmThreshold": 80,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "rds",
+      "QuotaCode": "L-7A5B6625",
+      "QuotaName": "DB instances per account",
+      "Value": 40,
+      "AlarmThreshold": 75,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "iot",
+      "QuotaCode": "L-0EA0E460",
+      "QuotaName": "Maximum number of things",
+      "Value": 1000,
+      "AlarmThreshold": 80,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "sagemaker",
+      "QuotaCode": "L-85EED4F7",
+      "QuotaName": "Maximum number of endpoints",
+      "Value": 50,
+      "AlarmThreshold": 70,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "cloudfront",
+      "QuotaCode": "L-2F6A2F7E",
+      "QuotaName": "Maximum number of distributions",
+      "Value": 200,
+      "AlarmThreshold": 75,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "s3",
+      "QuotaCode": "L-DC2B2D3D",
+      "QuotaName": "Maximum number of buckets",
+      "Value": 100,
+      "AlarmThreshold": 80,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "dynamodb",
+      "QuotaCode": "L-05BACIC3",
+      "QuotaName": "Maximum number of tables",
+      "Value": 256,
+      "AlarmThreshold": 75,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "ServiceCode": "apigateway",
+      "QuotaCode": "L-927DEB7A",
+      "QuotaName": "Maximum number of APIs",
+      "Value": 500,
+      "AlarmThreshold": 80,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    }
+  ],
+  "QuotaAlarms": {
+    "EvaluationPeriods": 2,
+    "Period": 300,
+    "Statistic": "Maximum",
+    "TreatMissingData": "breaching"
+  },
+  "QuotaRequests": {
+    "AutoRequest": true,
+    "RequestTemplate": {
+      "DesiredValue": "{{currentValue}}",
+      "Reason": "Aumento automático de quota baseado no crescimento do sistema"
+    }
+  }
+} 

@@ -1,0 +1,133 @@
+{
+  "CompositeAlarms": [
+    {
+      "Name": "farmtech-high-load-composite",
+      "Description": "Alerta composto para alta carga do sistema",
+      "AlarmRule": "ALARM(farmtech-cpu-high) AND ALARM(farmtech-memory-high) AND ALARM(farmtech-network-high)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts",
+        "arn:aws:automate:us-east-1:ec2:recover"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-api-degradation-composite",
+      "Description": "Alerta composto para degradação da API",
+      "AlarmRule": "ALARM(farmtech-api-latency-high) AND ALARM(farmtech-api-error-rate-high) AND ALARM(farmtech-api-availability-low)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts",
+        "arn:aws:automate:us-east-1:ec2:reboot"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-database-issues-composite",
+      "Description": "Alerta composto para problemas no banco de dados",
+      "AlarmRule": "ALARM(farmtech-db-cpu-high) AND ALARM(farmtech-db-connections-high) AND ALARM(farmtech-db-latency-high)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts",
+        "arn:aws:automate:us-east-1:rds:reboot"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-iot-issues-composite",
+      "Description": "Alerta composto para problemas IoT",
+      "AlarmRule": "ALARM(farmtech-iot-connection-loss) AND ALARM(farmtech-iot-message-loss) AND ALARM(farmtech-iot-latency-high)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts",
+        "arn:aws:automate:us-east-1:iot:restart"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-ml-issues-composite",
+      "Description": "Alerta composto para problemas de ML",
+      "AlarmRule": "ALARM(farmtech-ml-latency-high) AND ALARM(farmtech-ml-error-rate-high) AND ALARM(farmtech-ml-accuracy-low)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts",
+        "arn:aws:automate:us-east-1:sagemaker:restart"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-security-issues-composite",
+      "Description": "Alerta composto para problemas de segurança",
+      "AlarmRule": "ALARM(farmtech-waf-blocked) AND ALARM(farmtech-unauthorized-access) AND ALARM(farmtech-security-group-changes)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-security-alerts",
+        "arn:aws:automate:us-east-1:securityhub:investigate"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-security-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-security-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-cost-issues-composite",
+      "Description": "Alerta composto para problemas de custo",
+      "AlarmRule": "ALARM(farmtech-daily-cost-high) AND ALARM(farmtech-unused-resources) AND ALARM(farmtech-cost-anomaly)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-cost-alerts",
+        "arn:aws:automate:us-east-1:cost-optimization:analyze"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-cost-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-cost-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-availability-issues-composite",
+      "Description": "Alerta composto para problemas de disponibilidade",
+      "AlarmRule": "ALARM(farmtech-health-check-failed) AND ALARM(farmtech-endpoint-unavailable) AND ALARM(farmtech-region-issues)",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts",
+        "arn:aws:automate:us-east-1:route53:failover"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "InsufficientDataActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    }
+  ],
+  "CompositeAlarmConfig": {
+    "ActionsEnabled": true,
+    "AlarmDescription": "Alertas compostos para o FarmTech Dashboard",
+    "EvaluationPeriods": 2,
+    "DatapointsToAlarm": 2,
+    "Threshold": 1,
+    "ComparisonOperator": "GreaterThanThreshold",
+    "TreatMissingData": "breaching"
+  }
+} 

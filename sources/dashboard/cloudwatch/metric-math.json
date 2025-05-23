@@ -1,0 +1,226 @@
+{
+  "MetricMathExpressions": [
+    {
+      "Name": "farmtech-api-success-rate",
+      "Description": "Taxa de sucesso da API",
+      "Expression": "100 * (1 - (SUM(api_errors) / SUM(api_requests)))",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "api_errors",
+          "Namespace": "FarmTech/API",
+          "MetricName": "ErrorCount",
+          "Stat": "Sum"
+        },
+        {
+          "Name": "api_requests",
+          "Namespace": "FarmTech/API",
+          "MetricName": "RequestCount",
+          "Stat": "Sum"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-system-efficiency",
+      "Description": "Eficiência do sistema",
+      "Expression": "100 * (1 - (AVG(cpu_utilization) + AVG(memory_utilization) + AVG(disk_utilization)) / 300)",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "cpu_utilization",
+          "Namespace": "FarmTech/System",
+          "MetricName": "CPUUtilization",
+          "Stat": "Average"
+        },
+        {
+          "Name": "memory_utilization",
+          "Namespace": "FarmTech/System",
+          "MetricName": "MemoryUtilization",
+          "Stat": "Average"
+        },
+        {
+          "Name": "disk_utilization",
+          "Namespace": "FarmTech/System",
+          "MetricName": "DiskUtilization",
+          "Stat": "Average"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-iot-reliability",
+      "Description": "Confiabilidade IoT",
+      "Expression": "100 * (1 - (SUM(connection_losses) + SUM(message_losses)) / (SUM(connection_attempts) + SUM(message_attempts)))",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "connection_losses",
+          "Namespace": "FarmTech/IoT",
+          "MetricName": "ConnectionLosses",
+          "Stat": "Sum"
+        },
+        {
+          "Name": "message_losses",
+          "Namespace": "FarmTech/IoT",
+          "MetricName": "MessageLosses",
+          "Stat": "Sum"
+        },
+        {
+          "Name": "connection_attempts",
+          "Namespace": "FarmTech/IoT",
+          "MetricName": "ConnectionAttempts",
+          "Stat": "Sum"
+        },
+        {
+          "Name": "message_attempts",
+          "Namespace": "FarmTech/IoT",
+          "MetricName": "MessageAttempts",
+          "Stat": "Sum"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-ml-performance",
+      "Description": "Performance do ML",
+      "Expression": "100 * (AVG(accuracy) * (1 - (AVG(latency) / 1000)))",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "accuracy",
+          "Namespace": "FarmTech/ML",
+          "MetricName": "ModelAccuracy",
+          "Stat": "Average"
+        },
+        {
+          "Name": "latency",
+          "Namespace": "FarmTech/ML",
+          "MetricName": "ModelLatency",
+          "Stat": "Average"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-cost-efficiency",
+      "Description": "Eficiência de custos",
+      "Expression": "100 * (1 - (SUM(actual_cost) / SUM(estimated_cost)))",
+      "Period": 3600,
+      "Metrics": [
+        {
+          "Name": "actual_cost",
+          "Namespace": "FarmTech/Cost",
+          "MetricName": "ActualCost",
+          "Stat": "Sum"
+        },
+        {
+          "Name": "estimated_cost",
+          "Namespace": "FarmTech/Cost",
+          "MetricName": "EstimatedCost",
+          "Stat": "Sum"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-database-efficiency",
+      "Description": "Eficiência do banco de dados",
+      "Expression": "100 * (1 - (AVG(cpu_utilization) + AVG(connection_utilization) + AVG(storage_utilization)) / 300)",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "cpu_utilization",
+          "Namespace": "FarmTech/Database",
+          "MetricName": "CPUUtilization",
+          "Stat": "Average"
+        },
+        {
+          "Name": "connection_utilization",
+          "Namespace": "FarmTech/Database",
+          "MetricName": "ConnectionUtilization",
+          "Stat": "Average"
+        },
+        {
+          "Name": "storage_utilization",
+          "Namespace": "FarmTech/Database",
+          "MetricName": "StorageUtilization",
+          "Stat": "Average"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-network-efficiency",
+      "Description": "Eficiência da rede",
+      "Expression": "100 * (1 - (SUM(error_packets) / SUM(total_packets)))",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "error_packets",
+          "Namespace": "FarmTech/Network",
+          "MetricName": "ErrorPackets",
+          "Stat": "Sum"
+        },
+        {
+          "Name": "total_packets",
+          "Namespace": "FarmTech/Network",
+          "MetricName": "TotalPackets",
+          "Stat": "Sum"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-overall-health",
+      "Description": "Saúde geral do sistema",
+      "Expression": "(api_success_rate + system_efficiency + iot_reliability + ml_performance + cost_efficiency + database_efficiency + network_efficiency) / 7",
+      "Period": 300,
+      "Metrics": [
+        {
+          "Name": "api_success_rate",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "APISuccessRate",
+          "Stat": "Average"
+        },
+        {
+          "Name": "system_efficiency",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "SystemEfficiency",
+          "Stat": "Average"
+        },
+        {
+          "Name": "iot_reliability",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "IoTReliability",
+          "Stat": "Average"
+        },
+        {
+          "Name": "ml_performance",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "MLPerformance",
+          "Stat": "Average"
+        },
+        {
+          "Name": "cost_efficiency",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "CostEfficiency",
+          "Stat": "Average"
+        },
+        {
+          "Name": "database_efficiency",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "DatabaseEfficiency",
+          "Stat": "Average"
+        },
+        {
+          "Name": "network_efficiency",
+          "Namespace": "FarmTech/Metrics",
+          "MetricName": "NetworkEfficiency",
+          "Stat": "Average"
+        }
+      ]
+    }
+  ],
+  "MetricMathConfig": {
+    "Period": 300,
+    "EvaluationPeriods": 2,
+    "DatapointsToAlarm": 2,
+    "Threshold": 80,
+    "ComparisonOperator": "LessThanThreshold",
+    "TreatMissingData": "missing"
+  }
+} 

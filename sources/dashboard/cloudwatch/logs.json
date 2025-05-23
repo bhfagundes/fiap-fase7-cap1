@@ -1,0 +1,144 @@
+{
+  "LogGroups": [
+    {
+      "LogGroupName": "/farmtech/eks",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/aurora",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/lambda",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/cloudfront",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/iot",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/sqs",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/sagemaker",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/application",
+      "RetentionInDays": 30,
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    }
+  ],
+  "MetricFilters": [
+    {
+      "LogGroupName": "/farmtech/application",
+      "FilterName": "ErrorCount",
+      "FilterPattern": "ERROR",
+      "MetricTransformations": [
+        {
+          "MetricName": "ErrorCount",
+          "MetricNamespace": "FarmTech/Application",
+          "MetricValue": "1"
+        }
+      ]
+    },
+    {
+      "LogGroupName": "/farmtech/application",
+      "FilterName": "WarningCount",
+      "FilterPattern": "WARNING",
+      "MetricTransformations": [
+        {
+          "MetricName": "WarningCount",
+          "MetricNamespace": "FarmTech/Application",
+          "MetricValue": "1"
+        }
+      ]
+    },
+    {
+      "LogGroupName": "/farmtech/lambda",
+      "FilterName": "LambdaErrors",
+      "FilterPattern": "ERROR",
+      "MetricTransformations": [
+        {
+          "MetricName": "LambdaErrors",
+          "MetricNamespace": "FarmTech/Lambda",
+          "MetricValue": "1"
+        }
+      ]
+    },
+    {
+      "LogGroupName": "/farmtech/iot",
+      "FilterName": "IoTDisconnections",
+      "FilterPattern": "Disconnected",
+      "MetricTransformations": [
+        {
+          "MetricName": "IoTDisconnections",
+          "MetricNamespace": "FarmTech/IoT",
+          "MetricValue": "1"
+        }
+      ]
+    }
+  ],
+  "LogStreams": [
+    {
+      "LogGroupName": "/farmtech/application",
+      "LogStreamName": "dashboard-{instance-id}",
+      "Tags": {
+        "Component": "Dashboard",
+        "Instance": "{instance-id}"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/application",
+      "LogStreamName": "api-{instance-id}",
+      "Tags": {
+        "Component": "API",
+        "Instance": "{instance-id}"
+      }
+    },
+    {
+      "LogGroupName": "/farmtech/application",
+      "LogStreamName": "worker-{instance-id}",
+      "Tags": {
+        "Component": "Worker",
+        "Instance": "{instance-id}"
+      }
+    }
+  ]
+} 

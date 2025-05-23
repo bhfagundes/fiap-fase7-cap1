@@ -1,0 +1,160 @@
+{
+  "Alarms": [
+    {
+      "AlarmName": "farmtech-eks-high-cpu",
+      "AlarmDescription": "Alerta quando a utilização de CPU do cluster EKS excede 80%",
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/EKS",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "ClusterName",
+          "Value": "farmtech-cluster"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-aurora-high-connections",
+      "AlarmDescription": "Alerta quando o número de conexões do Aurora excede 100",
+      "MetricName": "DatabaseConnections",
+      "Namespace": "AWS/RDS",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 100,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "DBClusterIdentifier",
+          "Value": "farmtech-aurora"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-lambda-errors",
+      "AlarmDescription": "Alerta quando há erros nas funções Lambda",
+      "MetricName": "Errors",
+      "Namespace": "AWS/Lambda",
+      "Statistic": "Sum",
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 0,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "farmtech-data-processor"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-cloudfront-errors",
+      "AlarmDescription": "Alerta quando a taxa de erro do CloudFront excede 1%",
+      "MetricName": "TotalErrorRate",
+      "Namespace": "AWS/CloudFront",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 1,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "DistributionId",
+          "Value": "farmtech-distribution"
+        },
+        {
+          "Name": "Region",
+          "Value": "Global"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-iot-disconnected",
+      "AlarmDescription": "Alerta quando um sensor IoT se desconecta",
+      "MetricName": "ConnectedClients",
+      "Namespace": "AWS/IoT",
+      "Statistic": "Minimum",
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 1,
+      "ComparisonOperator": "LessThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "ClientId",
+          "Value": "farmtech-sensor-1"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-sqs-queue-size",
+      "AlarmDescription": "Alerta quando o tamanho da fila SQS excede 1000 mensagens",
+      "MetricName": "ApproximateNumberOfMessagesVisible",
+      "Namespace": "AWS/SQS",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 1000,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "farmtech-data-queue"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-sagemaker-latency",
+      "AlarmDescription": "Alerta quando a latência do modelo SageMaker excede 100ms",
+      "MetricName": "ModelLatency",
+      "Namespace": "AWS/SageMaker",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 100,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "ModelName",
+          "Value": "farmtech-model"
+        }
+      ]
+    },
+    {
+      "AlarmName": "farmtech-cost-threshold",
+      "AlarmDescription": "Alerta quando o custo diário excede $100",
+      "MetricName": "EstimatedCharges",
+      "Namespace": "AWS/Billing",
+      "Statistic": "Maximum",
+      "Period": 86400,
+      "EvaluationPeriods": 1,
+      "Threshold": 100,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "OKActions": ["arn:aws:sns:us-east-1:123456789012:farmtech-alerts"],
+      "Dimensions": [
+        {
+          "Name": "Currency",
+          "Value": "USD"
+        }
+      ]
+    }
+  ]
+} 

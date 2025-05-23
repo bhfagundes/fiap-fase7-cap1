@@ -1,0 +1,202 @@
+{
+  "Rules": [
+    {
+      "Name": "farmtech-api-contributors",
+      "Description": "Análise de contribuidores da API",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/application",
+        "LogFormat": "JSON",
+        "Fields": [
+          "requestId",
+          "userId",
+          "endpoint",
+          "method",
+          "statusCode",
+          "duration",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "COUNT"
+    },
+    {
+      "Name": "farmtech-iot-contributors",
+      "Description": "Análise de contribuidores IoT",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/iot",
+        "LogFormat": "JSON",
+        "Fields": [
+          "deviceId",
+          "messageType",
+          "payloadSize",
+          "timestamp",
+          "status"
+        ]
+      },
+      "AggregationField": "deviceId",
+      "AggregationFunction": "COUNT"
+    },
+    {
+      "Name": "farmtech-database-contributors",
+      "Description": "Análise de contribuidores do banco de dados",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/aurora",
+        "LogFormat": "JSON",
+        "Fields": [
+          "queryId",
+          "userId",
+          "queryType",
+          "tableName",
+          "duration",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "COUNT"
+    },
+    {
+      "Name": "farmtech-ml-contributors",
+      "Description": "Análise de contribuidores do ML",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/sagemaker",
+        "LogFormat": "JSON",
+        "Fields": [
+          "requestId",
+          "userId",
+          "modelName",
+          "predictionType",
+          "duration",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "COUNT"
+    },
+    {
+      "Name": "farmtech-error-contributors",
+      "Description": "Análise de contribuidores de erros",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/application",
+        "LogFormat": "JSON",
+        "Fields": [
+          "errorId",
+          "userId",
+          "errorType",
+          "component",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "COUNT"
+    },
+    {
+      "Name": "farmtech-performance-contributors",
+      "Description": "Análise de contribuidores de performance",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/application",
+        "LogFormat": "JSON",
+        "Fields": [
+          "requestId",
+          "userId",
+          "endpoint",
+          "duration",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "AVG"
+    },
+    {
+      "Name": "farmtech-security-contributors",
+      "Description": "Análise de contribuidores de segurança",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/application",
+        "LogFormat": "JSON",
+        "Fields": [
+          "eventId",
+          "userId",
+          "eventType",
+          "ipAddress",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "COUNT"
+    },
+    {
+      "Name": "farmtech-cost-contributors",
+      "Description": "Análise de contribuidores de custos",
+      "State": "ENABLED",
+      "Schema": {
+        "LogGroupName": "/farmtech/billing",
+        "LogFormat": "JSON",
+        "Fields": [
+          "chargeId",
+          "userId",
+          "service",
+          "amount",
+          "timestamp"
+        ]
+      },
+      "AggregationField": "userId",
+      "AggregationFunction": "SUM"
+    }
+  ],
+  "Insights": [
+    {
+      "Name": "farmtech-api-insights",
+      "Description": "Insights da API",
+      "Rules": [
+        "farmtech-api-contributors",
+        "farmtech-error-contributors",
+        "farmtech-performance-contributors"
+      ]
+    },
+    {
+      "Name": "farmtech-iot-insights",
+      "Description": "Insights de IoT",
+      "Rules": [
+        "farmtech-iot-contributors",
+        "farmtech-error-contributors"
+      ]
+    },
+    {
+      "Name": "farmtech-database-insights",
+      "Description": "Insights do banco de dados",
+      "Rules": [
+        "farmtech-database-contributors",
+        "farmtech-performance-contributors"
+      ]
+    },
+    {
+      "Name": "farmtech-ml-insights",
+      "Description": "Insights de ML",
+      "Rules": [
+        "farmtech-ml-contributors",
+        "farmtech-performance-contributors"
+      ]
+    },
+    {
+      "Name": "farmtech-security-insights",
+      "Description": "Insights de segurança",
+      "Rules": [
+        "farmtech-security-contributors",
+        "farmtech-error-contributors"
+      ]
+    },
+    {
+      "Name": "farmtech-cost-insights",
+      "Description": "Insights de custos",
+      "Rules": [
+        "farmtech-cost-contributors"
+      ]
+    }
+  ]
+} 

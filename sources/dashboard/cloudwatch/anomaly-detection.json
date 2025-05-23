@@ -1,0 +1,140 @@
+{
+  "AnomalyDetectors": [
+    {
+      "Name": "farmtech-api-latency-anomaly",
+      "Description": "Detector de anomalias para latência da API",
+      "MetricName": "Latency",
+      "Namespace": "FarmTech/API",
+      "Stat": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 100,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-iot-connection-anomaly",
+      "Description": "Detector de anomalias para conexões IoT",
+      "MetricName": "ConnectedClients",
+      "Namespace": "FarmTech/IoT",
+      "Stat": "Sum",
+      "Period": 60,
+      "EvaluationPeriods": 2,
+      "Threshold": 50,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-db-performance-anomaly",
+      "Description": "Detector de anomalias para performance do banco de dados",
+      "MetricName": "CPUUtilization",
+      "Namespace": "FarmTech/Database",
+      "Stat": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 80,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-ml-latency-anomaly",
+      "Description": "Detector de anomalias para latência dos modelos ML",
+      "MetricName": "ModelLatency",
+      "Namespace": "FarmTech/ML",
+      "Stat": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 200,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-cost-anomaly",
+      "Description": "Detector de anomalias para custos",
+      "MetricName": "EstimatedCharges",
+      "Namespace": "AWS/Billing",
+      "Stat": "Sum",
+      "Period": 3600,
+      "EvaluationPeriods": 2,
+      "Threshold": 100,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-error-rate-anomaly",
+      "Description": "Detector de anomalias para taxa de erros",
+      "MetricName": "ErrorRate",
+      "Namespace": "FarmTech/Application",
+      "Stat": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 1,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-memory-usage-anomaly",
+      "Description": "Detector de anomalias para uso de memória",
+      "MetricName": "MemoryUtilization",
+      "Namespace": "FarmTech/System",
+      "Stat": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 85,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    },
+    {
+      "Name": "farmtech-network-traffic-anomaly",
+      "Description": "Detector de anomalias para tráfego de rede",
+      "MetricName": "NetworkIn",
+      "Namespace": "FarmTech/Network",
+      "Stat": "Sum",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 1000000,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+      ]
+    }
+  ],
+  "AnomalyDetectionConfig": {
+    "TrainingPeriod": 604800,
+    "EvaluationPeriod": 86400,
+    "Sensitivity": 0.8,
+    "Seasonality": "DAILY",
+    "Aggregation": "AVERAGE",
+    "MissingData": "BREAKING"
+  }
+} 

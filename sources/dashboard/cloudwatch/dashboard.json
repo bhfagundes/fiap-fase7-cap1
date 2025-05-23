@@ -1,0 +1,150 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/EKS", "cluster_failed_node_count", "ClusterName", "farmtech-cluster"],
+          ["AWS/EKS", "cluster_node_count", "ClusterName", "farmtech-cluster"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "EKS Cluster Nodes",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "CPUUtilization", "DBClusterIdentifier", "farmtech-aurora"],
+          ["AWS/RDS", "FreeableMemory", "DBClusterIdentifier", "farmtech-aurora"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Aurora Performance",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/Lambda", "Invocations", "FunctionName", "farmtech-data-processor"],
+          ["AWS/Lambda", "Errors", "FunctionName", "farmtech-data-processor"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Lambda Performance",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/CloudFront", "Requests", "DistributionId", "farmtech-distribution", "Region", "Global"],
+          ["AWS/CloudFront", "TotalErrorRate", "DistributionId", "farmtech-distribution", "Region", "Global"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "CloudFront Performance",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 12,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/IoT", "ConnectedClients", "ClientId", "farmtech-sensor-1"],
+          ["AWS/IoT", "PublishMessages", "ClientId", "farmtech-sensor-1"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "IoT Performance",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 12,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/SQS", "ApproximateNumberOfMessagesVisible", "QueueName", "farmtech-data-queue"],
+          ["AWS/SQS", "ApproximateAgeOfOldestMessage", "QueueName", "farmtech-data-queue"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "SQS Queue Status",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 18,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/SageMaker", "ModelLatency", "ModelName", "farmtech-model"],
+          ["AWS/SageMaker", "Invocations", "ModelName", "farmtech-model"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "SageMaker Performance",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 18,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          ["AWS/Billing", "EstimatedCharges", "Currency", "USD"],
+          ["AWS/Billing", "EstimatedCharges", "ServiceName", "AmazonEC2"],
+          ["AWS/Billing", "EstimatedCharges", "ServiceName", "AmazonRDS"],
+          ["AWS/Billing", "EstimatedCharges", "ServiceName", "AmazonS3"]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Cost Overview",
+        "period": 86400
+      }
+    }
+  ]
+} 
