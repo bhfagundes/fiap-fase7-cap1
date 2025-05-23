@@ -22,19 +22,11 @@ sources/
 ### Diagramas de Arquitetura
 
 #### Topologia Cloud
-![Topologia Cloud](sources/dashboard/docs/cloud-topology.png)
+![Topologia Cloud](docs/cloud-topology.png)
 *Diagrama da infraestrutura AWS do FarmTech Dashboard*
 
-#### Diagrama C4
-![Diagrama C4](sources/dashboard/docs/c4-diagram.png)
-*Arquitetura em diferentes níveis de abstração*
-
-#### Pipeline CI/CD
-![Pipeline CI/CD](sources/dashboard/docs/cicd-pipeline.png)
-*Fluxo de integração e entrega contínua*
-
 #### Fluxo de Alertas
-![Fluxo de Alertas](sources/dashboard/docs/alertas.png)
+![Fluxo de Alertas](docs/alertas.png)
 *Sistema de gerenciamento e distribuição de notificações*
 
 ### Componentes Principais
@@ -283,6 +275,7 @@ sources/
 | Documentação | Manual | Automática | 100% automatizada |
 | Performance DB | 500ms | < 50ms | 90% mais rápido |
 | Segurança | Básica | Avançada | 100% mais segura |
+| Classificação Grãos | Manual | Automática | 96% de acurácia |
 
 #### Ganhos Financeiros Estimados
 - Redução de custos operacionais: R$ 40.000/ano
