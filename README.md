@@ -76,6 +76,75 @@ Infraestrutura como Código (IaC) é uma prática que permite gerenciar e provis
    - Cache distribuído
    - Banco de dados serverless
 
+## Ir Além
+
+O projeto FarmTech oferece opções extras para desenvolvimento, permitindo que os grupos escolham uma delas para implementar e ganhar pontos extras na avaliação. Cada implementação "Ir Além" vale até 10 pontos e contribui para um troféu de excelência em busca do "Ir Além" no curso de IA da FIAP.
+
+### Opção 1: Integração de IA na Infraestrutura AWS
+**Objetivo:** Implementar um sistema de reconhecimento de imagens usando AWS Rekognition para análise de culturas.
+
+**Implementação:**
+- Configuração do AWS Rekognition via Terraform
+- Pipeline de processamento de imagens
+- Integração com sistema existente
+- Análise automática de saúde das culturas
+
+**Documentação Técnica:**
+- Código-fonte organizado e comentado
+- Figura clara da arquitetura do projeto
+- Justificativa concisa
+- Prints de configuração do console AWS
+- Vídeo demonstrativo (5 minutos)
+
+**Critérios de Avaliação:**
+- Funcionalidade do sistema
+- Documentação no GitHub
+- Apresentação final
+- Qualidade da implementação
+
+### Opção 2: Otimização de Recursos com Algoritmos Genéticos
+**Objetivo:** Desenvolver um algoritmo genético para otimização de recursos agrícolas.
+
+**Implementação:**
+- Adaptação do algoritmo genético
+- Integração com dados do FarmTech
+- Comparação de estratégias
+- Otimização de recursos
+
+**Documentação Técnica:**
+- Notebook Jupyter/Colab com análises
+- Código fonte comentado
+- Justificativa técnica
+- Resultados comparativos
+- Vídeo demonstrativo (5 minutos)
+
+**Critérios de Avaliação:**
+- Funcionalidade do sistema
+- Documentação no GitHub
+- Apresentação final
+- Qualidade dos resultados
+
+### Opção 3: Sistema de Visão Computacional
+**Objetivo:** Desenvolver um sistema de visão computacional para análise de culturas.
+
+**Implementação:**
+- Redes Neurais Convolucionais (CNN)
+- YOLO para detecção de objetos
+- Transfer Learning
+- Análise em tempo real
+
+**Documentação Técnica:**
+- Notebooks de treinamento
+- Código fonte do modelo
+- Métricas de performance
+- Vídeo demonstrativo (5 minutos)
+
+**Critérios de Avaliação:**
+- Precisão do modelo
+- Documentação técnica
+- Demonstração prática
+- Qualidade da implementação
+
 ## Melhorias Implementadas
 
 ### Fase 1 - Base de Dados Inicial
