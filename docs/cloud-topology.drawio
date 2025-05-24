@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-03-14T12:00:00.000Z" agent="Mozilla/5.0" version="21.7.5" etag="your-etag" type="device">
+  <diagram id="cloud-topology" name="FarmTech Cloud Topology">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Internet -->
+        <mxCell id="internet" value="Internet" style="shape=mxgraph.aws4.internet_alt1;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- CloudFront -->
+        <mxCell id="cloudfront" value="CloudFront" style="shape=mxgraph.aws4.cloudfront;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- ALB -->
+        <mxCell id="alb" value="Application Load Balancer" style="shape=mxgraph.aws4.application_load_balancer;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- EKS -->
+        <mxCell id="eks" value="EKS" style="shape=mxgraph.aws4.elastic_kubernetes_service;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;whiteSpace=wrap;fillColor=#7AA116;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Aurora -->
+        <mxCell id="aurora" value="Aurora Serverless" style="shape=mxgraph.aws4.aurora;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- IoT Core -->
+        <mxCell id="iot" value="IoT Core" style="shape=mxgraph.aws4.iot_core;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lambda -->
+        <mxCell id="lambda" value="Lambda" style="shape=mxgraph.aws4.lambda;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- SNS -->
+        <mxCell id="sns" value="SNS" style="shape=mxgraph.aws4.sns;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- SQS -->
+        <mxCell id="sqs" value="SQS" style="shape=mxgraph.aws4.sqs;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="400" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- SageMaker -->
+        <mxCell id="sagemaker" value="SageMaker" style="shape=mxgraph.aws4.sagemaker;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Bedrock -->
+        <mxCell id="bedrock" value="Bedrock" style="shape=mxgraph.aws4.bedrock;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="520" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Rekognition -->
+        <mxCell id="rekognition" value="Rekognition" style="shape=mxgraph.aws4.rekognition;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="520" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="conn1" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="internet" target="cloudfront">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn2" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="cloudfront" target="alb">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn3" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="alb" target="eks">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn4" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="aurora">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn5" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="iot">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn6" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="lambda">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn7" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="sns">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn8" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="sqs">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn9" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="sagemaker">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn10" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="bedrock">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn11" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eks" target="rekognition">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 

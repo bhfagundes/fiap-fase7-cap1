@@ -1,0 +1,66 @@
+{
+  "Queries": [
+    {
+      "Name": "ErrorAnalysis",
+      "Description": "Análise de erros por componente e tipo",
+      "Query": "fields @timestamp, @message\n| filter @message like /ERROR/\n| stats count(*) as errorCount by @message\n| sort errorCount desc\n| limit 20"
+    },
+    {
+      "Name": "PerformanceAnalysis",
+      "Description": "Análise de performance por endpoint",
+      "Query": "fields @timestamp, @message\n| filter @message like /Request completed/\n| parse @message /Request completed in (?<duration>\\d+)ms/\n| stats avg(duration) as avgDuration, p95(duration) as p95Duration, count(*) as requestCount by @message\n| sort avgDuration desc\n| limit 20"
+    },
+    {
+      "Name": "IoTDeviceStatus",
+      "Description": "Status dos dispositivos IoT",
+      "Query": "fields @timestamp, @message\n| filter @message like /Device status/\n| parse @message /Device (?<deviceId>\\w+) is (?<status>\\w+)/\n| stats count(*) as statusCount by deviceId, status\n| sort statusCount desc"
+    },
+    {
+      "Name": "DatabaseQueries",
+      "Description": "Análise de queries do banco de dados",
+      "Query": "fields @timestamp, @message\n| filter @message like /SQL query/\n| parse @message /SQL query: (?<query>.*) took (?<duration>\\d+)ms/\n| stats avg(duration) as avgDuration, count(*) as queryCount by query\n| sort avgDuration desc\n| limit 20"
+    },
+    {
+      "Name": "UserActivity",
+      "Description": "Análise de atividade dos usuários",
+      "Query": "fields @timestamp, @message\n| filter @message like /User action/\n| parse @message /User (?<userId>\\w+) performed (?<action>\\w+) on (?<resource>\\w+)/\n| stats count(*) as actionCount by userId, action, resource\n| sort actionCount desc\n| limit 20"
+    },
+    {
+      "Name": "SystemHealth",
+      "Description": "Saúde do sistema",
+      "Query": "fields @timestamp, @message\n| filter @message like /System health/\n| parse @message /System health: (?<component>\\w+) is (?<status>\\w+)/\n| stats count(*) as statusCount by component, status\n| sort statusCount desc"
+    },
+    {
+      "Name": "SecurityEvents",
+      "Description": "Eventos de segurança",
+      "Query": "fields @timestamp, @message\n| filter @message like /Security event/\n| parse @message /Security event: (?<eventType>\\w+) from (?<source>\\w+)/\n| stats count(*) as eventCount by eventType, source\n| sort eventCount desc\n| limit 20"
+    },
+    {
+      "Name": "ResourceUtilization",
+      "Description": "Utilização de recursos",
+      "Query": "fields @timestamp, @message\n| filter @message like /Resource utilization/\n| parse @message /Resource utilization: (?<resource>\\w+) is at (?<utilization>\\d+)%/\n| stats avg(utilization) as avgUtilization, max(utilization) as maxUtilization by resource\n| sort avgUtilization desc"
+    }
+  ],
+  "Dashboards": [
+    {
+      "Name": "ErrorAnalysisDashboard",
+      "Description": "Dashboard de análise de erros",
+      "Queries": ["ErrorAnalysis", "PerformanceAnalysis"]
+    },
+    {
+      "Name": "IoTDashboard",
+      "Description": "Dashboard de IoT",
+      "Queries": ["IoTDeviceStatus", "SystemHealth"]
+    },
+    {
+      "Name": "PerformanceDashboard",
+      "Description": "Dashboard de performance",
+      "Queries": ["PerformanceAnalysis", "DatabaseQueries", "ResourceUtilization"]
+    },
+    {
+      "Name": "SecurityDashboard",
+      "Description": "Dashboard de segurança",
+      "Queries": ["SecurityEvents", "UserActivity"]
+    }
+  ]
+} 

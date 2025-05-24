@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-03-14T12:00:00.000Z" agent="Mozilla/5.0" version="21.7.5" etag="your-etag" type="device">
+  <diagram id="cicd-diagram" name="FarmTech CI/CD Pipeline">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- GitHub -->
+        <mxCell id="github" value="GitHub" style="shape=mxgraph.aws4.github;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- GitHub Actions -->
+        <mxCell id="actions" value="GitHub Actions" style="shape=mxgraph.aws4.github_actions;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- ECR -->
+        <mxCell id="ecr" value="ECR" style="shape=mxgraph.aws4.elastic_container_registry;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- EKS -->
+        <mxCell id="eks" value="EKS" style="shape=mxgraph.aws4.elastic_kubernetes_service;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- SonarQube -->
+        <mxCell id="sonar" value="SonarQube" style="shape=mxgraph.aws4.sonarqube;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Snyk -->
+        <mxCell id="snyk" value="Snyk" style="shape=mxgraph.aws4.snyk;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- ArgoCD -->
+        <mxCell id="argocd" value="ArgoCD" style="shape=mxgraph.aws4.argocd;html=1;dashed=0;fillColor=#232F3E;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="78" height="78" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="conn1" value="Push Code" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="github" target="actions">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn2" value="Build &amp; Test" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actions" target="ecr">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn3" value="Deploy" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ecr" target="eks">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn4" value="Code Analysis" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="actions" target="sonar">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn5" value="Security Scan" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="actions" target="snyk">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="conn6" value="GitOps" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="actions" target="argocd">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 

@@ -1,0 +1,146 @@
+{
+  "Rules": [
+    {
+      "Name": "farmtech-daily-backup",
+      "Description": "Regra para backup diário do banco de dados",
+      "ScheduleExpression": "cron(0 0 * * ? *)",
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "BackupLambda",
+          "Arn": "arn:aws:lambda:us-east-1:123456789012:function:farmtech-backup",
+          "Input": "{\"action\": \"backup\", \"type\": \"daily\"}"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-weekly-maintenance",
+      "Description": "Regra para manutenção semanal do sistema",
+      "ScheduleExpression": "cron(0 0 ? * SUN *)",
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "MaintenanceLambda",
+          "Arn": "arn:aws:lambda:us-east-1:123456789012:function:farmtech-maintenance",
+          "Input": "{\"action\": \"maintenance\", \"type\": \"weekly\"}"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-monthly-report",
+      "Description": "Regra para geração de relatório mensal",
+      "ScheduleExpression": "cron(0 0 1 * ? *)",
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "ReportLambda",
+          "Arn": "arn:aws:lambda:us-east-1:123456789012:function:farmtech-report",
+          "Input": "{\"action\": \"report\", \"type\": \"monthly\"}"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-iot-data-processing",
+      "Description": "Regra para processamento de dados IoT",
+      "EventPattern": {
+        "source": ["aws.iot"],
+        "detail-type": ["IoT Data"],
+        "detail": {
+          "deviceId": ["farmtech-sensor-*"]
+        }
+      },
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "IoTProcessorLambda",
+          "Arn": "arn:aws:lambda:us-east-1:123456789012:function:farmtech-iot-processor"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-error-notification",
+      "Description": "Regra para notificação de erros",
+      "EventPattern": {
+        "source": ["aws.cloudwatch"],
+        "detail-type": ["CloudWatch Alarm State Change"],
+        "detail": {
+          "state": {
+            "value": ["ALARM"]
+          }
+        }
+      },
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "ErrorNotificationSNS",
+          "Arn": "arn:aws:sns:us-east-1:123456789012:farmtech-alerts"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-cost-alert",
+      "Description": "Regra para alerta de custos",
+      "EventPattern": {
+        "source": ["aws.cloudwatch"],
+        "detail-type": ["CloudWatch Alarm State Change"],
+        "detail": {
+          "alarmName": ["farmtech-cost-threshold"],
+          "state": {
+            "value": ["ALARM"]
+          }
+        }
+      },
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "CostAlertSNS",
+          "Arn": "arn:aws:sns:us-east-1:123456789012:farmtech-cost-alerts"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-security-scan",
+      "Description": "Regra para varredura de segurança",
+      "ScheduleExpression": "cron(0 0 ? * * *)",
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "SecurityScanLambda",
+          "Arn": "arn:aws:lambda:us-east-1:123456789012:function:farmtech-security-scan",
+          "Input": "{\"action\": \"scan\", \"type\": \"security\"}"
+        }
+      ]
+    },
+    {
+      "Name": "farmtech-performance-test",
+      "Description": "Regra para teste de performance",
+      "ScheduleExpression": "cron(0 0 ? * SUN *)",
+      "State": "ENABLED",
+      "Targets": [
+        {
+          "Id": "PerformanceTestLambda",
+          "Arn": "arn:aws:lambda:us-east-1:123456789012:function:farmtech-performance-test",
+          "Input": "{\"action\": \"test\", \"type\": \"performance\"}"
+        }
+      ]
+    }
+  ],
+  "EventBuses": [
+    {
+      "Name": "farmtech-custom-bus",
+      "Description": "Event bus personalizado para eventos do FarmTech",
+      "Tags": {
+        "Project": "FarmTech",
+        "Environment": "Production"
+      }
+    }
+  ],
+  "Archives": [
+    {
+      "ArchiveName": "farmtech-events-archive",
+      "Description": "Arquivo de eventos do FarmTech",
+      "EventSourceArn": "arn:aws:events:us-east-1:123456789012:event-bus/farmtech-custom-bus",
+      "RetentionDays": 365
+    }
+  ]
+} 
