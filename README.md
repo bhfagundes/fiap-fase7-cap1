@@ -4,6 +4,10 @@
   <img src="assets/logo-fiap.png" width="300">
 </div>
 
+## 📺 Vídeos
+- [Vídeo Principal](https://youtu.be/bcHISRaXmzk)
+- [Ir Além](https://youtu.be/Kc43t1Fi3Vc)
+
 ## 👨‍🎓 Integrantes:
 * Brenner Fagundes
 * Bryan Fagundes
@@ -1244,6 +1248,7 @@ graph TD
 ## Requisitos
 - Python 3.8+
 - AWS CLI configurado
+- Streamlit
 - Dependências listadas em requirements.txt
 
 ## Instalação
@@ -1251,6 +1256,7 @@ graph TD
 2. Instale as dependências:
 ```bash
 pip install -r requirements.txt
+pip install streamlit plotly opencv-python pillow
 ```
 
 ## Configuração
@@ -1258,10 +1264,12 @@ pip install -r requirements.txt
 2. Configure as variáveis de ambiente necessárias
 
 ## Uso
-1. Execute o dashboard principal:
+1. Execute o dashboard Streamlit:
 ```bash
-python sources/dashboard/main.py
+streamlit run sources/dashboard/main.py
 ```
+
+O dashboard será aberto automaticamente no seu navegador padrão. Se não abrir automaticamente, você pode acessar através do endereço: http://localhost:8501
 
 ## Grupo
 - Hyanka Coelho Mota
